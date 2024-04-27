@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_spectacular',
     'app',
+    'api',
+    'api.v1',
 ]
 
 MIDDLEWARE = [
@@ -129,8 +131,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Django REST Framework Configuration
 REST_FRAMEWORK = {
+    # Setting Date Format to dd-mm-yyyy
+    'DATE_FORMAT': "%d-%m-%Y",
+    'DATE_INPUT_FORMATS': ["%d-%m-%Y"],
+
     # Schema specification for SwaggerUI
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+
+    'EXCEPTION_HANDLER': 'app.exception_handler.custom_exception_handler',
 }
 
 # drf-spectacular settings

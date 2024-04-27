@@ -19,6 +19,10 @@ def add_superuser(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
+        ('auth', '__latest__'),
+        ('admin', '__latest__'),
+        ('sessions', '__latest__'),
+        ('contenttypes', '__latest__'),
     ]
 
     operations = [
