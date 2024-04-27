@@ -9,7 +9,6 @@ def custom_exception_handler(exc, context):
     response = exception_handler(exc, context)
 
     if isinstance(exc, IntegrityError):
-        custom_response_data = {'error': 'Database integrity error occurred'}
-        return Response(custom_response_data, status=status.HTTP_400_BAD_REQUEST)
+        return Response({'detail': str(exc.detail['non_field_errors'][0])}, status=status.HTTP_400_BAD_REQUEST)
 
     return response

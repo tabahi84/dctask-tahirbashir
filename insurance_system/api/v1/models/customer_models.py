@@ -13,16 +13,15 @@ class Customer(models.Model):
     def __str__(self):
             return f"{self.first_name} {self.last_name}"
     
+    # DJango Admin calls this one
+    def clean(self):
+        self.first_name = self.first_name.capitalize()
+        self.last_name = self.last_name.capitalize()
+        return super().clean()
+    
     class Meta:
         constraints = [
-            models.UniqueConstraint(Lower('first_name') + " " + Lower('last_name'),
-                                    name='unique_fullname',            
-                                    # fields=[Lower('first_name'), Lower('last_name')],
+            models.UniqueConstraint(fields= ['first_name', 'last_name'],
+                                    name='customer_unique_fullname',
                                     violation_error_message="Customer with same first and last names already exists")
-            # models.UniqueConstraint(
-            #     expressions=[
-            #         Lower('first_name'), 
-            #         Lower('last_name')
-            #     ],
-            # )
         ]

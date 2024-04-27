@@ -8,8 +8,13 @@ from django.core.exceptions import ValidationError
 #  VALIDATION - SECTION
 # ======================================
 regex_name_validator = RegexValidator(
-    regex=r'^[A-Za-z]+(?:[-\s]?[A-Za-z]+)*$',
-    message="Incorrect name string. Names can only contain alphabets, '-' and (space)"
+    regex=r'^[A-Za-z]{2}(?:[-\s]?[A-Za-z]+)*$',
+    message="Incorrect name. Names can only contain alphabets, '-' and (space)"
+)
+
+regex_title_validator = RegexValidator(
+    regex=r'^[A-Za-z]{3}(?:[-()&.:]?[A-Za-z0-9/\s]+)*(?:[.)]){0,2}$',
+    message="Incorrect title. Titles can only contain alphabets, numbers, '/', '-', '.', ':', '&', '(', ')' and (space)"
 )
 
 def validate_date(dt:date, lower_bound_years:int=100) -> date|None:
