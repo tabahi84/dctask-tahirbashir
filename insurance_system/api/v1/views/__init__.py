@@ -1,1 +1,2 @@
 from .customer_views import CustomerCreateView
+from .quote_views import QuoteCreateUpdateView

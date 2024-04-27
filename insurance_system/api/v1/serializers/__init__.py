@@ -1,1 +1,2 @@
+from .quote_serializers import QuoteSerializer
 from .customer_serializers import CustomerSerializer

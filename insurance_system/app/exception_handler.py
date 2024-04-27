@@ -10,5 +10,7 @@ def custom_exception_handler(exc, context):
 
     if isinstance(exc, IntegrityError):
         return Response({'detail': str(exc.detail['non_field_errors'][0])}, status=status.HTTP_400_BAD_REQUEST)
+    elif isinstance(exc, Exception):
+        return Response({'detail': str(exc)}, status=status.HTTP_400_BAD_REQUEST)
 
     return response
