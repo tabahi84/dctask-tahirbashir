@@ -1,6 +1,9 @@
 {
     "files.exclude": {
-        // "**/__init__.py": true,
+        "**/.empty": true,
+        "**/__init__.py": true,
+
+        "**/env": true,
         "**/__pycache__": true
     }
 }
