@@ -1,0 +1,10 @@
+version: '3.7'
+
+services:
+  insurance_system:
+    build: .
+    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ./insurance_system/__DB-DIR__/:/insurance_system/__DB-DIR__/
+    ports:
+      - 8000:8000

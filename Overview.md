@@ -1,11 +1,15 @@
-# Democrance - Task (Implementation Overview)
+# Overview
 This document created to give an overview of the task implementation, ERD, assumptions and directory structure. It aims to facilitating the reviewer.
 
 ## Entity Relationship
 For this task, three entities are created, as can be seen in following image.
+
 ![Entity-Relationship-Diagram](__README-MEDIA__/ERD.png)
+
 For policies, [in-code datastructure](insurance_system/api/utils.py#L43)  is used. It has been kept in mind that even though policies are not persisted in DB, on Admin Panel all required fields are available for ease of use.
+
 ![Admin-Panel-Policy-Types](__README-MEDIA__/Policy-Types.png)
+
 ![Admin-Panel-Policy-State](__README-MEDIA__/Policy-States.png)
 
 > [!NOTE]  
@@ -16,19 +20,27 @@ Code is comprised of two applications
 
 ![DIR-TopLevel](__README-MEDIA__/DIR-TOPLEVEL.png)
 
-- **app:** This is the entry point of the system. It contains following
+### app
+This is the entry point of the system. It contains following
   - Admin account migration
   - Custom exception handler
   - Main api-endpoints
 
-- **api:** This is the actual implementation of the system. As deduced from assessment criteria images, setup has been kept flexible so as to facilitate upgradation and maintainance of apis. It contains following
+### api
+This is the actual implementation of the system. As deduced from assessment criteria images, setup has been kept flexible so as to facilitate upgradation and maintainance of apis. It contains following
+
 ![DIR-API](__README-MEDIA__/DIR-API.png)
-   - urls
-   - utils
-   - v1
+- urls
+- utils
+- v1
 
+#### **api.v1**
+This directory contains Customer, Quote, Policy and Search components. Code is distributed in following sections.
+- views
+- models
+- sanitizers
+- migrations
 
-- **api.v1**: This directory contains Customer, Quote, Policy and Search components. Code has been divided on the basis of types.e.g., models, serializers and views are in their respective directories
 ![DIR-API-V1](__README-MEDIA__/DIR-API-V1.png)
 
 ## Validations
@@ -56,9 +68,6 @@ All api-endpoints are open access to all. No authentication scheme has been inco
 
 
 ## Additional Considerations
-> [!TIP]
-> Initial testing is suggested to be done via SwaggerUI.
-
 > [!WARNING]  
 > SuperUser account `admin` with password `admin123` is created via migrations. Do not create admin account via django-admin
 
