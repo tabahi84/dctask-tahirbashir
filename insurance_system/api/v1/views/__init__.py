@@ -1,3 +1,4 @@
 from .customer_views import CustomerCreateView
 from .quote_views import QuoteCreateUpdateView
+from .search_views import CustomerSearchAPIView
 from .policy_views import CustomerPoliciesListView, PolicyDetailWOHistoryView, PolicyDetailView
