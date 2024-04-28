@@ -34,7 +34,7 @@ OR
 ### 2-b. Run via Docker [Preferable]
 ```
 docker compose build
-docker compose -d up
+docker compose up -d
 ```
 
 ### 3. Modes of Access
