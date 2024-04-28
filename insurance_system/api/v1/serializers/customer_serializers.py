@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from django.forms.models import model_to_dict
 
-from ..models import Customer
+from api.v1.models import Customer
 
 class CustomerSerializer(serializers.ModelSerializer):
     id = serializers.PrimaryKeyRelatedField(read_only=True)

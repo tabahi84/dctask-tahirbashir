@@ -6,7 +6,7 @@ from .customer_models import Customer
 
 
 class Quote(models.Model):
-    customer = models.ForeignKey(Customer, blank=False, related_name="customer_id", on_delete=models.CASCADE)
+    customer = models.ForeignKey(Customer, blank=False, related_name="policies", on_delete=models.CASCADE)
     policy_type = models.CharField(max_length=25, blank=False, choices=AppUtils.QuoteType.choices)
     premium = models.IntegerField(blank=True, default=0)
     coverage = models.IntegerField(blank=True, default=0)
@@ -46,3 +46,8 @@ class Quote(models.Model):
         self.coverage = policy_type_obj.coverage
         
         return super().clean()
+
+class QuoteHistory(models.Model):
+    quote = models.ForeignKey(Quote, blank=False, related_name='history', on_delete=models.CASCADE)
+    state = models.CharField(max_length=100)
+    updated_at = models.DateTimeField(auto_now_add=True)

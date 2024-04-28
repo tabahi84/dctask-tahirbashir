@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from django.forms.models import model_to_dict
 
-from ..models import Quote
+from api.v1.models import Quote
 from .customer_serializers import CustomerSerializer
 
 
