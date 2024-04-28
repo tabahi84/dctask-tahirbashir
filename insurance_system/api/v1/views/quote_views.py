@@ -1,9 +1,11 @@
 from rest_framework import generics
 from rest_framework import permissions, parsers
+from drf_spectacular.utils import extend_schema
 
 from api.v1.models import Quote
 from api.v1.serializers import QuoteSerializer
 
+@extend_schema(tags=['Quote APIs'])
 class QuoteCreateUpdateView(generics.CreateAPIView, generics.UpdateAPIView):
     parser_classes = [parsers.JSONParser]
     permission_classes = [permissions.AllowAny]
